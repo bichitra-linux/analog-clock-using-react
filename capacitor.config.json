@@ -1,0 +1,14 @@
+{
+  "appId": "com.chronocompass.app",
+  "appName": "Chrono Compass",
+  "webDir": "build",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
