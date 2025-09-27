@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Chrono Compass
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Chrono Compass is a cross-platform analog clock dashboard that stays in sync with your device time and location. It ships as an installable Progressive Web App (PWA), delivers silky smooth updates with sub-second alignment, and gracefully handles location permissions, offline usage, and reduced-motion preferences.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- **Device-synced analog clock + dedicated digital readout** with micro-adjusted tick scheduling for zero drift.
+- **GPS integration** powered by the browser Geolocation API with comprehensive error handling, accuracy reporting, and retry controls.
+- **Responsive, mobile-first layout** with safe-area support for modern devices and fine-tuned glassmorphism styling.
+- **Offline-ready PWA**: install it on desktop or mobile and keep the clock running without connectivity.
+- **Accessible experience** featuring ARIA roles, reduced-motion fallbacks, and keyboard-friendly controls.
 
-### `npm start`
+## 🚀 Quick Start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The app will be available at [http://localhost:3000](http://localhost:3000).
 
-### `npm test`
+## 🧪 Testing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm test
+```
 
-### `npm run build`
+Unit tests cover the key dashboard areas and validate the geolocation integration.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📦 Production Build
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This outputs an optimized bundle in the `build` directory, ready for static hosting.
 
-### `npm run eject`
+## 📱 Install as a PWA
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Open the production build (`npm run build` + serve) or `npm start` in Chrome/Edge.
+2. Use the browser menu → “Install Chrono Compass”.
+3. Launch the standalone app from your home screen or apps list.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🔒 Permissions & Privacy
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Location access is optional; deny it to keep using the clock without GPS data.
+- No location data leaves the device—everything runs locally in the browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🛠 Tech Stack
 
-## Learn More
+- React 18 + Hooks
+- Custom hooks for device time and GPS management
+- PropTypes for runtime safety
+- Create React App toolchain with service worker enhancements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🤝 Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Issues and pull requests are welcome! Please open a ticket describing the enhancement or bugfix you have in mind.

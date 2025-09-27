@@ -1,7 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
-import "./styles.css";
-import Clock from "./Clock";
+import "./index.css";
+import App from "./App";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Clock />, rootElement);
+const root = ReactDOM.createRoot(rootElement);
+root.render(<App />);
+
+serviceWorkerRegistration.register();

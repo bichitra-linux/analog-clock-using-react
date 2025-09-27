@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Chrono",
+  "name": "Chrono Compass",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,8 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "any",
+  "theme_color": "#5f2c82",
+  "background_color": "#f5f7ff",
+  "description": "A cross-platform analog clock that stays in sync with your device time and location."
 }
