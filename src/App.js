@@ -4,7 +4,6 @@ import './App.css';
 import Clock from './components/Clock';
 import DateInfo from './components/DateInfo';
 import LocationInfo from './components/LocationInfo';
-import StatusBanner from './components/StatusBanner';
 import LoadingOverlay from './components/LoadingOverlay';
 import useDeviceTime from './hooks/useDeviceTime';
 import useGeolocation from './hooks/useGeolocation';
@@ -13,7 +12,7 @@ import TimezoneModal from './components/TimezoneModal';
 
 const App = () => {
   const { time } = useDeviceTime();
-  const { status, location, error, requestLocation } = useGeolocation();
+  const { status, location, requestLocation } = useGeolocation();
   const defaultZone = useMemo(
     () => Intl.DateTimeFormat().resolvedOptions().timeZone ?? 'Etc/UTC',
     [],
