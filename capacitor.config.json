@@ -1,6 +1,6 @@
 {
-  "appId": "com.chronocompass.app",
-  "appName": "Chrono Compass",
+  "appId": "com.bichitra.chronowatch.io",
+  "appName": "chrono watch",
   "webDir": "build",
   "bundledWebRuntime": false,
   "server": {
