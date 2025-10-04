@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy for Chrono Watch - World Clock App">
+    <meta name="robots" content="index, follow">
+    <title>Privacy Policy - Chrono Watch</title>
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --text: #2d3748;
+            --text-light: #4a5568;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --success: #48bb78;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .last-updated {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .last-updated strong {
+            color: var(--primary);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+            color: var(--text-light);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(240, 147, 251, 0.08));
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box.success {
+            border-left-color: var(--success);
+            background: rgba(72, 187, 120, 0.08);
+        }
+
+        .highlight-box.warning {
+            border-left-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.08);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .grid-item {
+            background: var(--bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .grid-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .check-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .check-list li::before {
+            content: "✅ ";
+            margin-right: 8px;
+        }
+
+        .cross-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .cross-list li::before {
+            content: "❌ ";
+            margin-right: 8px;
+        }
+
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .footer {
+            background: var(--bg);
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--secondary);
+        }
+
+        .summary-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .summary-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .summary-box ul {
+            margin-left: 20px;
+        }
+
+        .summary-box li {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔒 Privacy Policy</h1>
+            <p>Chrono Watch - World Clock & Timezone App</p>
+        </div>
+
+        <div class="content">
+            <div class="last-updated">
+                <strong>Last Updated:</strong> October 4, 2025<br>
+                <strong>Effective Date:</strong> October 4, 2025
+            </div>
+
+            <h2>Introduction</h2>
+            <p>Welcome to Chrono Watch. We are committed to protecting your privacy and ensuring you have a positive experience while using our application. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application.</p>
+            <p>By using Chrono Watch, you agree to the collection and use of information in accordance with this policy.</p>
+
+            <h2>Information We Collect</h2>
+            
+            <h3>Location Data</h3>
+            <p>Chrono Watch requests access to your device's GPS location data for the following purposes:</p>
+            <div class="grid">
+                <div class="grid-item">
+                    <strong>Timezone Detection</strong>
+                    <p>Automatically determine your current timezone based on geographic coordinates</p>
+                </div>
+                <div class="grid-item">
+                    <strong>Coordinate Display</strong>
+                    <p>Show your current latitude and longitude on the screen</p>
+                </div>
+                <div class="grid-item">
+                    <strong>Accuracy Information</strong>
+                    <p>Display the precision of the GPS reading in meters</p>
+                </div>
+            </div>
+
+            <h3>What We DON'T Collect</h3>
+            <p>We want to be crystal clear about what we do NOT collect:</p>
+            <ul class="cross-list">
+                <li>Personal Information (names, emails, phone numbers)</li>
+                <li>User Accounts or Login Information</li>
+                <li>Financial or Payment Information</li>
+                <li>Device IDs or Advertising IDs</li>
+                <li>Usage Analytics or Tracking Data</li>
+                <li>Contact Lists or Address Books</li>
+                <li>Photos, Videos, or Media Files</li>
+                <li>Browsing History or Internet Usage</li>
+                <li>Communication Content (calls, messages, emails)</li>
+            </ul>
+
+            <h2>How We Use Your Information</h2>
+            
+            <div class="highlight-box success">
+                <h3>✅ Local Processing Only</h3>
+                <p><strong>Important:</strong> All location data processing happens entirely on your device.</p>
+                <ul class="check-list">
+                    <li>Processed locally on your phone</li>
+                    <li>Never leaves your device</li>
+                    <li>Not transmitted to any external servers</li>
+                    <li>Not stored permanently</li>
+                    <li>Not shared with third parties</li>
+                    <li>Not used for advertising or marketing</li>
+                </ul>
+            </div>
+
+            <p>Your location data is used exclusively on your device for:</p>
+            <ol>
+                <li><strong>Real-time Timezone Calculation:</strong> Converting GPS coordinates to timezone identifiers (e.g., "Asia/Kolkata")</li>
+                <li><strong>Display Purposes:</strong> Showing your current coordinates and accuracy on the screen</li>
+                <li><strong>Map Integration:</strong> Generating a link to view your location on Google Maps (only if you choose to open it)</li>
+            </ol>
+
+            <h2>Data Storage and Retention</h2>
+            
+            <h3>Temporary Storage</h3>
+            <p>Location data is stored <strong>temporarily in your device's memory</strong> only while the app is actively running. When you close the app, switch to another app, or restart your device, all location data is cleared from memory.</p>
+
+            <div class="highlight-box">
+                <strong>No Persistent Storage</strong>
+                <p>We do not:</p>
+                <ul>
+                    <li>Store location history</li>
+                    <li>Save previous locations</li>
+                    <li>Create location databases</li>
+                    <li>Back up location data to cloud services</li>
+                    <li>Cache location information beyond current session</li>
+                </ul>
+            </div>
+
+            <h2>Data Sharing and Disclosure</h2>
+            
+            <div class="highlight-box warning">
+                <h3>⚠️ Third-Party Sharing</h3>
+                <p><strong>We do not share, sell, rent, or trade your location data with any third parties.</strong></p>
+            </div>
+
+            <h3>Service Providers</h3>
+            <p>Chrono Watch uses the following third-party services that may have access to location data:</p>
+            
+            <div class="grid">
+                <div class="grid-item">
+                    <strong>Google Maps (Optional)</strong>
+                    <p>Only accessed if you tap the "View on Map" link. Subject to <a href="https://policies.google.com/privacy" target="_blank">Google Maps Privacy Policy</a>.</p>
+                </div>
+                <div class="grid-item">
+                    <strong>Device Operating System</strong>
+                    <p>Android/iOS location services required to obtain GPS coordinates. Subject to your device's privacy settings.</p>
+                </div>
+            </div>
+
+            <h2>Your Privacy Rights and Choices</h2>
+            
+            <h3>Location Permission Control</h3>
+            <p>You have complete control over location access:</p>
+
+            <div class="grid">
+                <div class="grid-item">
+                    <strong>Android Devices</strong>
+                    <p>Settings → Apps → Chrono Watch → Permissions → Location</p>
+                    <p>Choose: Allow only while using app (Recommended), Ask every time, or Don't allow</p>
+                </div>
+                <div class="grid-item">
+                    <strong>iOS Devices</strong>
+                    <p>Settings → Chrono Watch → Location</p>
+                    <p>Choose: While Using the App (Recommended), Ask Next Time, or Never</p>
+                </div>
+            </div>
+
+            <h3>Effect of Revoking Permission</h3>
+            <ul>
+                <li>App continues to work with manual timezone selection</li>
+                <li>GPS coordinates will not be displayed</li>
+                <li>Automatic timezone detection will be disabled</li>
+            </ul>
+
+            <h2>Children's Privacy</h2>
+            <p>Chrono Watch is suitable for users of all ages and does not collect any personal information. The app:</p>
+            <ul class="check-list">
+                <li>Does not require account creation</li>
+                <li>Does not collect personal data</li>
+                <li>Does not contain advertising</li>
+                <li>Does not include in-app purchases</li>
+                <li>Does not have social features</li>
+            </ul>
+            <p><strong>COPPA Compliance:</strong> We do not knowingly collect personal information from children under 13.</p>
+
+            <h2>Data Security</h2>
+            <p>While we don't store or transmit your data, we implement security best practices:</p>
+            <ul class="check-list">
+                <li>Local Processing: All data processing happens on your device</li>
+                <li>No Network Transmission: Location data never sent over the internet</li>
+                <li>No Database Storage: No permanent data storage</li>
+                <li>Minimal Permissions: Only requests necessary location permission</li>
+                <li>Open Source: Code is publicly available for security review</li>
+            </ul>
+
+            <h2>Legal Compliance</h2>
+            <p>Chrono Watch is designed to comply with:</p>
+            <div class="grid">
+                <div class="grid-item">
+                    <strong>GDPR</strong>
+                    <p>General Data Protection Regulation (EU)</p>
+                </div>
+                <div class="grid-item">
+                    <strong>CCPA</strong>
+                    <p>California Consumer Privacy Act (USA)</p>
+                </div>
+                <div class="grid-item">
+                    <strong>COPPA</strong>
+                    <p>Children's Online Privacy Protection Act (USA)</p>
+                </div>
+                <div class="grid-item">
+                    <strong>Other Laws</strong>
+                    <p>PIPEDA (Canada), Privacy Act (Australia), PDPA (Singapore), and more</p>
+                </div>
+            </div>
+
+            <h2>Cookies and Tracking</h2>
+            <p><strong>Chrono Watch does not use:</strong></p>
+            <ul class="cross-list">
+                <li>Cookies</li>
+                <li>Web beacons or tracking pixels</li>
+                <li>Analytics tools</li>
+                <li>Advertising SDKs</li>
+                <li>Session tracking</li>
+                <li>Fingerprinting technologies</li>
+            </ul>
+
+            <div class="summary-box">
+                <h3>📋 Privacy Summary</h3>
+                <ul class="check-list">
+                    <li><strong>We collect:</strong> Your GPS location (only when you grant permission)</li>
+                    <li><strong>We use it for:</strong> Showing your timezone and coordinates on the screen</li>
+                    <li><strong>We store it:</strong> Temporarily in memory while app is running</li>
+                    <li><strong>We share it:</strong> Never (all processing is local)</li>
+                    <li><strong>You control it:</strong> Through device location permissions</li>
+                    <li><strong>We protect it:</strong> By not storing or transmitting it</li>
+                </ul>
+            </div>
+
+            <h2>Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date at the top of this Privacy Policy and posting the new Privacy Policy in the app.</p>
+            <p>Your continued use of the app after any changes indicates your acceptance of the updated Privacy Policy.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+            
+            <div class="highlight-box">
+                <p><strong>Project Repository:</strong><br>
+                <a href="https://github.com/bichitra-linux/analog-clock-using-react" target="_blank" style="color: white;">https://github.com/bichitra-linux/analog-clock-using-react</a></p>
+                
+                <p><strong>Developer:</strong><br>
+                <a href="https://github.com/bichitra-linux" target="_blank" style="color: white;">@bichitra-linux</a></p>
+                
+                <p><strong>Response Time:</strong> We aim to respond to all privacy inquiries within 72 hours.</p>
+            </div>
+
+            <h2>Open Source</h2>
+            <p>Chrono Watch is open source software. You can review our code to verify our privacy practices:</p>
+            <a href="https://github.com/bichitra-linux/analog-clock-using-react" target="_blank" class="button">View Source Code on GitHub</a>
+
+            <h2>Acknowledgment</h2>
+            <p>By using Chrono Watch, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy.</p>
+        </div>
+
+        <div class="footer">
+            <p><strong>Chrono Watch</strong> - World Clock & Timezone App</p>
+            <p>Version 1.0 | Last Updated: October 4, 2025</p>
+            <p>
+                <a href="https://github.com/bichitra-linux/analog-clock-using-react" target="_blank">GitHub</a> |
+                <a href="mailto:support@example.com">Contact</a>
+            </p>
+            <p style="margin-top: 15px;">© 2025 Chrono Watch. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
