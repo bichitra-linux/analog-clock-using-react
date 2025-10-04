@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useMemo } from "react";
+import PropTypes from "prop-types";
 
-import { listTimeZones } from '../utils/timezone';
+import { listTimeZones } from "../utils/timezone";
 
 const TimezoneModal = ({ open, value, onChange, onClose }) => {
   const timeZones = useMemo(() => listTimeZones(), []);
@@ -12,13 +12,13 @@ const TimezoneModal = ({ open, value, onChange, onClose }) => {
     }
 
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         onClose();
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [open, onClose]);
 
   if (!open) {
@@ -52,7 +52,7 @@ const TimezoneModal = ({ open, value, onChange, onClose }) => {
             onClick={onClose}
             aria-label="Close timezone picker"
           >
-            ×
+            x
           </button>
         </div>
         <p className="timezone-modal-subtitle">
@@ -69,7 +69,7 @@ const TimezoneModal = ({ open, value, onChange, onClose }) => {
         >
           {timeZones.map((zone) => (
             <option key={zone} value={zone}>
-              {zone.replace(/_/g, ' ')}
+              {zone.replace(/_/g, " ")}
             </option>
           ))}
         </select>
