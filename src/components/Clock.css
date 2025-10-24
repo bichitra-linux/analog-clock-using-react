@@ -12,7 +12,11 @@
   width: 100%;
   border: none;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
+  /* Prevent layout shifts by containing all elements */
+  contain: layout style;
+  /* Fixed size prevents reflow */
+  min-height: var(--clock-size);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -56,6 +60,10 @@
   animation: clockFloat 6s ease-in-out infinite;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
+  /* Contain all clock hands within bounds */
+  overflow: hidden;
+  /* Prevent layout shifts from rotating hands */
+  will-change: auto;
 }
 
 @keyframes clockFloat {
@@ -241,6 +249,11 @@
   margin-left: -1.5px;
   border-radius: 3px 3px 50% 50%;
   filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.3));
+  /* Prevent layout shifts - use transform for rotation */
+  will-change: transform;
+  transform-origin: center bottom;
+  /* Ensure it stays within clock bounds */
+  pointer-events: none;
 }
 
 .second-hand::before {

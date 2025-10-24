@@ -1,33 +1,6 @@
-# 📱 C## ✨ Features
+# Chrono Compass
 
-- **📱 Mobile-First Design**: Optimized exclusively for smartphones and tablets with touch-friendly controls
-- **🌍 GPS Timezone Detection**: Automatically detects your timezone based on GPS coordinates with high accuracy (10-20m)
-- **⚡ Dual-Time Display**: Beautiful circular analog clock with both device time and selected timezone
-- **🔍 Timezone Picker**: Tap to search and select from hundreds of timezones worldwide
-- **📍 Location Information**: Real-time GPS coordinates, accuracy, and timezone details
-- **🎨 Modern UI**: Circular glassmorphic clock design with gradient backgrounds and smooth animations
-- **🌙 Time Difference**: Instant calculation of time difference between zones
-- **📲 Native Apps**: Full Android and iOS support via Capacitor
-- **🔒 Privacy-First**: All data processed locally on device, no server transmission
-- **♿ Accessible**: ARIA roles, reduced-motion support, and keyboard navigation
-- **🌐 Offline-Ready**: Works without internet connection once loaded
-
-## 📱 Supported Devices
-
-### ✅ Supported
-- **Smartphones**: Android 8.0+, iOS 13+
-- **Tablets**: iPad, Android tablets (7" - 12")
-- **Screen Sizes**: 320px - 1024px width
-- **Orientations**: Portrait (primary), Landscape
-
-### ❌ Not Supported
-- Desktop browsers (will show mobile-only notice)
-- Devices wider than 1024px
-- Legacy devices (Android < 8.0, iOS < 13)tch - Mobile World Clock
-
-**Chrono Watch** is a beautiful world clock app designed exclusively for **smartphones and tablets**. Built with React and Capacitor, it combines a stunning circular analog clock with GPS-powered timezone detection, providing an elegant timekeeping experience optimized for mobile devices.
-
-> 🚨 **Mobile-Only App**: This application is designed exclusively for smartphones and tablets. Desktop browsers will display a mobile-only notice directing users to access the app from their mobile device.
+Chrono Compass is a cross-platform analog clock dashboard that stays in sync with your device time and location. The experience now ships as a Capacitor-powered hybrid app, so you can compile native binaries for Android and iOS while keeping the smooth React UI, location awareness, and reduced-motion preferences.
 
 ## ✨ Features
 
