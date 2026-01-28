@@ -28,7 +28,7 @@
     "cap:open:ios": "npx cap open ios"
   },
   "devDependencies": {
-    "@capacitor/cli": "^7.4.3"
+    "@capacitor/cli": "^8.0.2"
   },
   "eslintConfig": {
     "extends": [
