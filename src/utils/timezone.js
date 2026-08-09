@@ -82,3 +82,72 @@ export const formatOffset = (offsetMinutes) => {
   const minutes = (absolute % 60).toString().padStart(2, '0');
   return `UTC${sign}${hours}:${minutes}`;
 };
+
+export const getZoneAbbrev = (date, timeZone) => {
+  try {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone,
+      timeZoneName: 'short',
+    }).formatToParts(date);
+    return parts.find((part) => part.type === 'timeZoneName')?.value ?? '';
+  } catch (error) {
+    return '';
+  }
+};
+
+export const getZoneLongName = (date, timeZone) => {
+  try {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone,
+      timeZoneName: 'long',
+    }).formatToParts(date);
+    return parts.find((part) => part.type === 'timeZoneName')?.value ?? '';
+  } catch (error) {
+    return '';
+  }
+};
+
+export const formatClockTime = (date, timeZone, { hour12 = true, showSeconds = true } = {}) => {
+  try {
+    return new Intl.DateTimeFormat([], {
+      timeZone,
+      hour: '2-digit',
+      minute: '2-digit',
+      ...(showSeconds ? { second: '2-digit' } : {}),
+      hour12,
+    }).format(date);
+  } catch (error) {
+    return '';
+  }
+};
+
+export const formatDayDifference = (date, timeZone, deviceTimeZone) => {
+  const parts = (zone) => {
+    const p = new Intl.DateTimeFormat('en-US', { timeZone: zone, day: '2-digit' }).formatToParts(date);
+    return Number(p.find((x) => x.type === 'day')?.value ?? 0);
+  };
+  return parts(timeZone) - parts(deviceTimeZone);
+};
+
+export const formatTimeDifference = (offsetMinutes, deviceOffsetMinutes) => {
+  const diff = Math.round(offsetMinutes - deviceOffsetMinutes);
+  if (diff === 0) return 'Matches device time';
+  const direction = diff > 0 ? 'ahead' : 'behind';
+  const absolute = Math.abs(diff);
+  const hours = Math.floor(absolute / 60);
+  const minutes = absolute % 60;
+  const amount = minutes === 0 ? `${hours}h` : `${hours}h ${minutes}m`;
+  return `${diff > 0 ? '+' : '-'}${amount} ${direction}`;
+};
+
+export const formatOffsetChip = (offsetMinutes, deviceOffsetMinutes) => {
+  const diff = Math.round(offsetMinutes - deviceOffsetMinutes);
+  const absolute = Math.abs(diff);
+  const hours = Math.floor(absolute / 60);
+  const minutes = absolute % 60;
+  const amount = minutes === 0 ? `${hours}HRS` : `${hours}H ${minutes}M`;
+  return diff === 0 ? 'SAME' : `${diff > 0 ? '+' : '-'}${amount}`;
+};
+
+export const getPrettyZoneName = (timeZone) =>
+  timeZone.split('/').pop().replace(/_/g, ' ');

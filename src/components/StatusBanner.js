@@ -1,39 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 
-const STATUS_MESSAGES = {
-  idle: 'Retrieving the essentials…',
-  loading: 'Locating you securely…',
-  ready: 'Synced with your device time and location.',
-  denied: 'Location permission is blocked. Enable it to see local data.',
-  unsupported: 'GPS is not available on this device.',
-  error: 'Something went wrong while getting your location.',
-};
+import Icon from './Icon';
 
-const StatusBanner = ({ status, error = null, onRetry }) => {
-  const message = error?.message || STATUS_MESSAGES[status] || STATUS_MESSAGES.idle;
-  const isActionable = ['denied', 'error'].includes(status);
+const StatusBanner = () => {
+  const [online, setOnline] = useState(() => navigator.onLine);
+
+  useEffect(() => {
+    const handleOnline = () => setOnline(true);
+    const handleOffline = () => setOnline(false);
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
+  if (online) {
+    return null;
+  }
 
   return (
-    <section
-      className={`status-banner status-${status}`}
-      role="status"
-      aria-live={status === 'ready' ? 'polite' : 'assertive'}
-    >
-      <p>{message}</p>
-      {isActionable && (
-        <button type="button" className="button button-ghost" onClick={onRetry}>
-          Try Again
-        </button>
-      )}
-    </section>
+    <div className="status-banner" role="status" aria-live="assertive">
+      <Icon name="refresh" size={18} />
+      <p>Offline — location and timezone sync unavailable</p>
+    </div>
   );
-};
-
-StatusBanner.propTypes = {
-  status: PropTypes.string.isRequired,
-  error: PropTypes.instanceOf(Error),
-  onRetry: PropTypes.func.isRequired,
 };
 
 export default StatusBanner;
