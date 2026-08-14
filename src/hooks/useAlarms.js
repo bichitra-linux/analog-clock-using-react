@@ -6,7 +6,8 @@ const SNOOZE_MS = 5 * 60 * 1000;
 const load = () => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
   } catch (error) {
     return [];
   }
@@ -43,6 +44,8 @@ const useAlarms = (now) => {
         }
       }
     });
+
+    snoozes.current = snoozes.current.filter((snooze) => snooze.at > nowMs);
 
     snoozes.current.forEach((snooze) => {
       if (nowMs >= snooze.at) {

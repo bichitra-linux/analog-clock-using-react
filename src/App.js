@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Capacitor } from '@capacitor/core';
+import { App as CapacitorApp } from '@capacitor/app';
 
 import './App.css';
 import AppHeader from './components/AppHeader';
@@ -14,14 +16,15 @@ import RingingAlarm from './components/RingingAlarm';
 import StopwatchView from './components/StopwatchView';
 import TimerView from './components/TimerView';
 import LoadingOverlay from './components/LoadingOverlay';
-import StatusBanner from './components/StatusBanner';
 import useDeviceTime from './hooks/useDeviceTime';
 import useGeolocation from './hooks/useGeolocation';
 import useSettings from './hooks/useSettings';
 import useFavorites from './hooks/useFavorites';
 import useAlarms from './hooks/useAlarms';
+import useAlarmNotifications from './hooks/useAlarmNotifications';
 import useStopwatch from './hooks/useStopwatch';
 import useTimer from './hooks/useTimer';
+import { handleBackPress } from './hooks/useBackPress';
 import tzLookup from 'tz-lookup';
 
 const App = () => {
@@ -43,8 +46,32 @@ const App = () => {
   const { settings, update } = useSettings();
   const { pins, home, pin, unpin, setAsHome } = useFavorites();
   const alarmsApi = useAlarms(time);
+  useAlarmNotifications(alarmsApi.alarms);
   const stopwatch = useStopwatch();
   const timer = useTimer();
+
+  useEffect(() => {
+    if (!Capacitor.isNativePlatform() || !CapacitorApp?.addListener) return undefined;
+    const listener = CapacitorApp.addListener('backButton', () => {
+      if (handleBackPress()) return;
+      if (tab !== 'clocks') {
+        setTab('clocks');
+        return;
+      }
+      if (clocksView === 'detail') {
+        setClocksView('world');
+        return;
+      }
+      if (clocksView === 'world' || clocksView === 'location') {
+        setClocksView('dashboard');
+        return;
+      }
+      CapacitorApp.minimizeApp();
+    });
+    return () => {
+      listener.then((handle) => handle.remove());
+    };
+  }, [tab, clocksView]);
 
   useEffect(() => {
     if (status === 'ready' && location && !hasManualZone) {
@@ -204,8 +231,6 @@ const App = () => {
         visible={status === 'loading'}
         message="Grabbing your precise location…"
       />
-
-      <StatusBanner />
 
       <TimezoneModal
         open={isZoneModalOpen}

@@ -13,14 +13,14 @@ const mockPosition = {
 
 beforeAll(() => {
   const geolocation = {
-    getCurrentPosition: jest.fn((success) => {
+    getCurrentPosition: vi.fn((success) => {
       success(mockPosition);
     }),
-    watchPosition: jest.fn((success) => {
+    watchPosition: vi.fn((success) => {
       success(mockPosition);
       return 1;
     }),
-    clearWatch: jest.fn(),
+    clearWatch: vi.fn(),
   };
 
   Object.defineProperty(global.navigator, 'geolocation', {

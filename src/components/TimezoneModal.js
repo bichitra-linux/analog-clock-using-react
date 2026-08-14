@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import timezoneStructure from '../data/timezoneStructure.json';
 import Icon from './Icon';
+import { useBackPress } from '../hooks/useBackPress';
 import {
   formatOffsetChip,
   getTimeZoneOffset,
@@ -13,6 +14,14 @@ import {
 const POPULAR = ['America/New_York', 'Europe/London', 'Asia/Tokyo', 'Asia/Dubai'];
 
 const TimezoneModal = ({ open, value, onChange, onClose, title = 'Select Timezone', nearbyZone = null, deviceTimeZone }) => {
+  useBackPress(
+    open
+      ? () => {
+          onClose();
+          return true;
+        }
+      : null,
+  );
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedContinent, setSelectedContinent] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('');

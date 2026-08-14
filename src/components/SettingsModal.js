@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from './Icon';
+import { useBackPress } from '../hooks/useBackPress';
 
 const Toggle = ({ checked, onChange, label, description }) => (
   <div className="settings-row">
@@ -30,6 +31,14 @@ Toggle.propTypes = {
 };
 
 const SettingsModal = ({ open, onClose, settings, update }) => {
+  useBackPress(
+    open
+      ? () => {
+          onClose();
+          return true;
+        }
+      : null,
+  );
   if (!open) {
     return null;
   }

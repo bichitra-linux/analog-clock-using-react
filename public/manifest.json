@@ -22,8 +22,8 @@
   "display": "standalone",
   "display_override": ["standalone", "fullscreen"],
   "orientation": "portrait-primary",
-  "theme_color": "#5f2c82",
-  "background_color": "#f5f7ff",
+  "theme_color": "#051424",
+  "background_color": "#051424",
   "description": "A mobile analog clock app with GPS timezone detection for smartphones and tablets.",
   "categories": ["utilities", "lifestyle"],
   "prefer_related_applications": false

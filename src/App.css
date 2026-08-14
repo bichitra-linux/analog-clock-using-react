@@ -1376,6 +1376,12 @@
   gap: 6px;
 }
 
+.editor-error {
+  margin: 0;
+  color: var(--error);
+  font-size: 0.85rem;
+}
+
 .day-chip {
   flex: 1;
   min-height: 40px;
@@ -1694,33 +1700,6 @@
 
 @keyframes spin {
   to { transform: rotate(360deg); }
-}
-
-/* ============ Status banner (offline) ============ */
-.status-banner {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 45;
-  width: min(calc(100% - 32px), 520px);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 18px;
-  margin-top: max(70px, calc(env(safe-area-inset-top) + 56px));
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 180, 171, 0.4);
-  background: rgba(147, 0, 10, 0.7);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  color: var(--error);
-}
-
-.status-banner p {
-  margin: 0;
-  font-size: 0.82rem;
-  font-weight: 600;
 }
 
 /* ============ Responsive ============ */

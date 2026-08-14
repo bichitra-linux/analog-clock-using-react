@@ -6,7 +6,8 @@ const HOME_KEY = 'chrono:home';
 const loadPins = () => {
   try {
     const raw = localStorage.getItem(PINS_KEY);
-    return raw ? JSON.parse(raw) : [];
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
   } catch (error) {
     return [];
   }

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Icon from './Icon';
 import { RINGTONES, playTone } from '../utils/sound';
+import { hourTo12, isPM, stepHour, stepMinute, toHour24 } from '../utils/timeMath';
+import { useBackPress } from '../hooks/useBackPress';
 
 const DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -17,9 +19,14 @@ const newAlarmState = {
 };
 
 const AlarmEditor = ({ alarm, onSave, onDelete, onClose, settings }) => {
+  useBackPress(() => {
+    onClose();
+    return true;
+  });
   const [draft, setDraft] = useState(alarm ? { ...alarm } : { ...newAlarmState });
   const [showRingtones, setShowRingtones] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [daysError, setDaysError] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -29,29 +36,27 @@ const AlarmEditor = ({ alarm, onSave, onDelete, onClose, settings }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
-  const hour12 = draft.hour % 12 === 0 ? 12 : draft.hour % 12;
-  const isPM = draft.hour >= 12;
+  const hour12 = hourTo12(draft.hour);
+  const pm = isPM(draft.hour);
 
-  const setHour12 = (value) => {
-    const clamped = ((value - 1) % 12 + 12) % 12 + 1;
-    setDraft((current) => {
-      const isPM = current.hour >= 12;
-      return { ...current, hour: isPM ? (clamped === 12 ? 12 : clamped + 12) : clamped === 12 ? 0 : clamped };
-    });
-  };
+  const setHour12 = (value) =>
+    setDraft((current) => ({ ...current, hour: toHour24(((value - 1) % 12 + 12) % 12 + 1, isPM(current.hour)) }));
 
-  const setMinute = (value) => {
-    setDraft((current) => ({ ...current, minute: ((value % 60) + 60) % 60 }));
-  };
+  const setMinute = (value) => setDraft((current) => ({ ...current, minute: stepMinute(value, 0) }));
 
   const toggleDay = (index) =>
     setDraft((current) => {
       const days = [...current.days];
       days[index] = !days[index];
+      if (days.some(Boolean)) setDaysError(false);
       return { ...current, days };
     });
 
   const save = () => {
+    if (!draft.days.some(Boolean)) {
+      setDaysError(true);
+      return;
+    }
     onSave({ ...draft });
     onClose();
   };
@@ -87,15 +92,15 @@ const AlarmEditor = ({ alarm, onSave, onDelete, onClose, settings }) => {
             <div className="wheel-column wheel-ampm">
               <button
                 type="button"
-                className={`wheel-value wheel-ampm-value ${!isPM ? 'active' : ''}`}
-                onClick={() => setDraft((current) => ({ ...current, hour: isPM ? current.hour - 12 : current.hour }))}
+                className={`wheel-value wheel-ampm-value ${!pm ? 'active' : ''}`}
+                onClick={() => setDraft((current) => ({ ...current, hour: isPM(current.hour) ? current.hour - 12 : current.hour }))}
               >
                 AM
               </button>
               <button
                 type="button"
-                className={`wheel-value wheel-ampm-value ${isPM ? 'active' : ''}`}
-                onClick={() => setDraft((current) => ({ ...current, hour: isPM ? current.hour : current.hour + 12 }))}
+                className={`wheel-value wheel-ampm-value ${pm ? 'active' : ''}`}
+                onClick={() => setDraft((current) => ({ ...current, hour: isPM(current.hour) ? current.hour : current.hour + 12 }))}
               >
                 PM
               </button>
@@ -117,6 +122,7 @@ const AlarmEditor = ({ alarm, onSave, onDelete, onClose, settings }) => {
                 </button>
               ))}
             </div>
+            {daysError && <p className="editor-error">Pick at least one repeat day.</p>}
           </div>
 
           <div className="editor-section">

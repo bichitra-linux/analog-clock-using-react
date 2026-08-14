@@ -3,52 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@capacitor/android": "^7.4.3",
-    "@capacitor/core": "^7.4.3",
-    "@capacitor/geolocation": "^7.1.5",
-    "@capacitor/ios": "^7.4.3",
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/app": "^8.1.1",
+    "@capacitor/core": "^8.5.0",
+    "@capacitor/geolocation": "^8.2.1",
+    "@capacitor/ios": "^8.5.0",
+    "@capacitor/local-notifications": "^8.3.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "tz-lookup": "^6.1.25",
-    "web-vitals": "^5.1.0"
+    "tz-lookup": "^6.1.25"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "vite",
+    "build": "vite build",
+    "test": "vitest run",
     "cap:sync": "npx cap sync",
     "cap:copy": "npx cap copy",
     "cap:open:android": "npx cap open android",
     "cap:open:ios": "npx cap open ios"
   },
   "devDependencies": {
-    "@capacitor/cli": "^7.4.3"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      "last 2 Chrome versions",
-      "last 2 ChromeAndroid versions",
-      "last 2 iOS versions",
-      "last 2 Safari versions",
-      "last 2 Android versions",
-      "not dead"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 ChromeAndroid version",
-      "last 1 iOS version"
-    ]
+    "@capacitor/cli": "^8.5.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "jsdom": "^30.0.1",
+    "vite": "^7.3.6",
+    "vitest": "^4.1.10"
   }
 }
